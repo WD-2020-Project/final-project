@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthInterceptor } from "./auth.interceptor";
+import { AccountComponent } from './account/account.component';
+import { CommentsComponent } from './products/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { AuthInterceptor } from "./auth.interceptor";
     LoginComponent,
     CartComponent,
     RegisterComponent,
+    AccountComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

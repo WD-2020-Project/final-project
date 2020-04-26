@@ -1,0 +1,26 @@
+<div class="account">
+  <div class="form">
+      <div class="form__header">
+          <h2 class="form__title">User Update</h2>
+          <p class="form__legend">Please change fields you want</p>
+      </div>
+      <div class="form__item">
+        <p>First Name</p>
+        <input class="input" type="text" name="first_name" ngModel [(ngModel)]="user.first_name">
+      </div>
+      <div class="form__item">
+        <p>Last Name</p>
+        <input class="input" type="text" name="last_name" ngModel [(ngModel)]="user.last_name">
+      </div>
+      <div class="form__item">
+        <p>Username</p>
+        <input class="input" type="username" name="description" ngModel [(ngModel)]="user.username">
+      </div>
+      <div class="wrapper-btn">
+          <button class="submit save" (click)="save()">Update</button>
+          <button class="submit cancel" (click)="cancel()">Log out</button> 
+      </div>
+  </div>  
+</div>
+
+

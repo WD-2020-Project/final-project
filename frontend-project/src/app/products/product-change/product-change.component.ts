@@ -33,4 +33,15 @@ export class ProductChangeComponent implements OnInit {
     this.goBack();
   }
 
+  changeSave(e):void {
+    // console.log(e.target.nextSibling);
+    e.target.previousSibling.style.color = '#fff';
+    e.target.previousSibling.style.background = '#1c1b1b';
+  }
+  changeCancel(e):void {
+    // console.log(e.target.previousSibling);
+    e.target.previousSibling.style.color = '#1c1b1b';
+    e.target.previousSibling.style.background = '#fff';
+  }
+
 }

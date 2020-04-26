@@ -1,16 +1,26 @@
-<div>
-    <input [(ngModel)]="product.name" type="text" >
+<div class="update">
+    <div class="form">
+        <div class="form__header">
+            <h2 class="form__title">Update</h2>
+            <p class="form__legend">Please change fields you want</p>
+        </div>
+        <div class="form__item">
+            <input class="input" type="text" name="username" ngModel [(ngModel)]="product.name">
+        </div>
+        <div class="form__item">
+            <input class="input" type="text" name="img" ngModel [(ngModel)]="product.img">
+        </div>
+        <div class="form__item">
+            <input class="input" type="text" name="description" ngModel [(ngModel)]="product.description">
+        </div>
+        <div class="form__item">
+            <input class="input" type="number" name="price" ngModel [(ngModel)]="product.price">
+        </div>
+        <div class="wrapper-btn">
+            <button class="submit save" (click)="save()">Save</button>
+            <button class="submit cancel" (click)="cancel()" (mouseover)="changeCancel($event)" (mouseleave)="changeSave($event)">Cancel</button> 
+        </div>
+    </div>  
 </div>
-<div>
-    <input [(ngModel)]="product.img" type="text" >
-</div>
-<div>
-    <input [(ngModel)]="product.description" type="text" >
-</div>
-<div>
-    <input [(ngModel)]="product.price" type="text" >
-</div>
-<button
-(click)="save()">Save</button>
-<button
-(click)="cancel()">Cancel</button>
+
+

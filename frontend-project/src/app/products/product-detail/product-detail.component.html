@@ -25,7 +25,8 @@
             </div>
         </div>
     </div>
-    <div class="container" *ngIf="update">
+    <div *ngIf="update">
         <app-product-change [product]="product"></app-product-change>
     </div>
+    <app-comments [comments]="product.comments" [product_id]="product.id"></app-comments>
 </div>

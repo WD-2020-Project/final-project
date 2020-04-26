@@ -6,6 +6,7 @@ import { catchError, map, tap, filter } from 'rxjs/operators';
 
 import { Category } from "./categories/category";
 import { Product } from "./products/product";
+import { Comment } from "./interfaces/comment";
 // import { CATEGORIES } from "./categories/category-detail/mock-categories";
 // import { ALL_PRODUCTS } from "./products/mock-products";
 import { CART_PRODUCTS } from "./cart/cart-products";
@@ -18,7 +19,7 @@ export class ShopService {
   products:Product[];
   categories:Category[];
   cartProducts:Product[] = CART_PRODUCTS;
-  BASE_URL = 'http://localhost:8000'
+  private BASE_URL = 'http://localhost:8000'
   private categoriesUrl = 'http://localhost:8000/api/categories';
   private productsUrl = 'http://localhost:8000/api/products';
 
@@ -30,12 +31,7 @@ export class ShopService {
     private http: HttpClient,
   ) { }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl)
-      .pipe(
-        catchError(this.handleError<Product[]>('getProducts', []))
-      );
-  }
+  // CATEGORY FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.categoriesUrl)
@@ -51,14 +47,24 @@ export class ShopService {
     );
   }
 
+  // PRODUCT FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsUrl)
+      .pipe(
+        catchError(this.handleError<Product[]>('getProducts', []))
+      );
+  }
+
   getProductById(productId: number): Observable<Product> {
     const url = `${this.productsUrl}/${productId}`;
     return this.http.get<Product>(url).pipe(
       catchError(this.handleError<Product>(`getProductById id=${productId}`))
     );
   }
-  
-  
+
+
   getProductsByCategoryId(categoryId: number): Observable<Category> {
     const url =  `${this.categoriesUrl}/${categoryId}` // api/categories/2
     return this.http.get<Category>(url).pipe(
@@ -78,18 +84,20 @@ export class ShopService {
   deleteProduct (product: Product | number): Observable<Product> {
     const id = typeof product === 'number' ? product : product.id;
     const url = `${this.productsUrl}/${id}`;
-  
+
     return this.http.delete<Product>(url, this.httpOptions).pipe(
       catchError(this.handleError<Product>('deleteProduct'))
     );
   }
+
   updateProduct (product: Product): Observable<Product> {
     const url =  `${this.productsUrl}/${product.id}`
     return this.http.put(url, product, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateProduct'))
     );
   }
-
+  // CART PRODUCTS FUNCTIONS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  
   getCartProducts() {
     return of(this.cartProducts);
   }
@@ -103,19 +111,38 @@ export class ShopService {
     return of(this.cartProducts.push(product));
   }
 
+
+  // COMMENT FUNCTIONS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  deleteComment (comment: Comment | number): Observable<Comment> {
+    const id = typeof comment === 'number' ? comment : comment.id;
+    const url = `${this.BASE_URL}/api/comments/${id}`;
+
+    return this.http.delete<Comment>(url, this.httpOptions).pipe(
+      catchError(this.handleError<Comment>('deleteComment'))
+    );
+  }
+
+  updateComment (comment: Comment): Observable<Comment> {
+    const url =  `${this.BASE_URL}/api/comments/${comment.id}`
+    return this.http.put(url, comment, this.httpOptions).pipe(
+      catchError(this.handleError<any>('updateComment'))
+    );
+  }
+  addComment (comment:any): Observable<Comment> {
+    const url =  `${this.BASE_URL}/api/users/comments`
+    return this.http.post(url, comment, this.httpOptions).pipe(
+      catchError(this.handleError<any>('updateComment'))
+    );
+  }
+
+  // HANDLE ERROR++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
       return of(result as T);
     };
-  }
-
-
-  login(username, password): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.BASE_URL}/api/login/`, {
-      username,
-      password
-    })
   }
 
 }

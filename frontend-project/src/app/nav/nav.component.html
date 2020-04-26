@@ -30,8 +30,12 @@
           <a [routerLink]="['/cart']"
           routerLinkActive="active" class="nav__link">Cart</a>
         </li>
+        <!-- <li *ngIf="authService.isAuthorized()">
+          <a [routerLink]="['/account']"
+          routerLinkActive="active" class="nav__link">Account</a>
+        </li> -->
         <li *ngIf="authService.isAuthorized()">
-          <a (click)="logout()" class="nav__link">Log Out</a>
+          <a class="nav__link" (click)="logout()">Log out</a>
         </li>
         <!-- <li class="nav__item" *ngIf="authService.isAuthorized()"> -->
           <!-- <p>Hello {{authService.user.username}}</p> -->

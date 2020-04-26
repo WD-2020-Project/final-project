@@ -1,14 +1,14 @@
-.update {
+.account {
   display: flex;
-  width: 100%;
   justify-content: center;
   /* align-items: center; */
+  min-height: 87vh;
   font-family: 'Montserrat', sans-serif;
-  /* background: #f2f2f2 */
+  background: #f2f2f2
 }
 
 .form {
-  margin: 10rem 0 0;
+  margin: 20rem 0 0;
   width: 40rem;
 }
 
@@ -40,13 +40,8 @@
   background: inherit;
 }
 
-.wrapper-btn {
-  display: flex;
-  justify-content: space-between;
-}
-
 .submit {
-  width: 100%;
+  width: 45%;
   font-weight: 600;
   font-size: 1.2rem;
   color: #fff;
@@ -63,12 +58,8 @@
   transition: ease-in-out .2s;
 }
 
-.cancel {
-  background-color: transparent;
-  color: #1c1b1b;
-}
-.cancel:hover {
-  background-color: #1c1b1b;
-  color: #fff;
+.wrapper-btn {
+  display: flex;
+  justify-content: space-between;
 }
 

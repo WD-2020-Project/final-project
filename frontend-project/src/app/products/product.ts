@@ -1,3 +1,4 @@
+import { Comment } from "../interfaces/comment";
 export interface Product {
     id: number,
     name: string,
@@ -6,4 +7,5 @@ export interface Product {
     categoryId: number,
     price: number,
     img: string,
+    comments: Comment[]
 }
