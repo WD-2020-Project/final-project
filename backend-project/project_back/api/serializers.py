@@ -64,3 +64,22 @@ class CategoryWithProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name', 'img', 'products']
+
+
+class ProductSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField()
+    price = serializers.IntegerField()
+    img = serializers.CharField()
+    category_id = serializers.IntegerField()
+
+    def create(self, validated_data):
+        return Category.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.img = validated_data.get('img', instance.img)
+        instance.price = validated_data.get('price', instance.price)
+        instance.category_id = validated_data.get('category_id', instance.category_id)
+        instance.save()
+        return instance
