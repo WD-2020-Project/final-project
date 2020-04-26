@@ -1,0 +1,43 @@
+<div class="app-nav">
+  <div class="container-fluid">
+    <div class="logo-container">
+      <a [routerLink]="['/categories']">
+        <h2 class="logo__title">Shmot.kz</h2>
+      </a>
+    </div>
+    <div class="navigation-container">
+      <nav class="nav">
+        <ul>
+          <li class="nav__item" *ngFor="let category of categories">
+            <a [routerLink]="['/categories', category.id]"
+            routerLinkActive="active" class="nav__link">{{category.name}}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="log-container">
+      <ul>
+        <!-- <li>
+          <a href="#" class="nav__link">Sign In</a>
+        </li> -->
+        <li *ngIf="!authService.isAuthorized()">
+          <a [routerLink]="['/register']" class="nav__link">Register</a>
+        </li>
+        <li *ngIf="!authService.isAuthorized()">
+          <a [routerLink]="['/login']" class="nav__link">Log In</a>
+        </li>
+        <li class="nav__item" *ngIf="authService.isAuthorized()">
+          <a [routerLink]="['/cart']"
+          routerLinkActive="active" class="nav__link">Cart</a>
+        </li>
+        <li *ngIf="authService.isAuthorized()">
+          <a (click)="logout()" class="nav__link">Log Out</a>
+        </li>
+        <!-- <li class="nav__item" *ngIf="authService.isAuthorized()"> -->
+          <!-- <p>Hello {{authService.user.username}}</p> -->
+          <!-- <a  class="nav__link">Hello {{authService.user.username}}</a> -->
+        <!-- </li> -->
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+.product-detail {
+    padding: 60px 0;
+    min-height: 87vh;
+    background-color: #f7f7f7;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.container > div {
+    width: 50%;
+}
+
+.product-container {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product__title {
+    color: #d3992c;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 24px;
+}
+
+.product__description {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    line-height: 1.5em;
+}
+
+.product__price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 60px;
+    line-height: 1.5em;
+}
+
+.cart-button {
+    width: 400px;
+    margin: 0 auto 40px;
+}
+
+.btn {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background-color: #d3992c;
+    color: #fff;
+    width: 100%;
+    padding: 25px 15px;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    cursor: pointer;
+}
+.delete-btn {
+    background-color: rgb(255, 0, 0);
+}
+
+.update-btn {
+    background-color: #1a420f;
+}
