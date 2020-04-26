@@ -7,19 +7,15 @@ from api.views.auth import UserListAPIVIew,UserDetailAPIView, SuperUserListAPIVi
 
 from rest_framework_jwt.views import obtain_jwt_token
 
-from api.views.view_fbv import product_by_category
-
 urlpatterns = [
     path('login/', obtain_jwt_token),
     path('users/', UserListAPIVIew.as_view()),
     path('users/<int:pk>', UserDetailAPIView.as_view()),
-    path('users/<int:pk>/comments', UserCommentsListAPIView.as_view()),
+    path('users/comments', UserCommentsListAPIView.as_view()),
     path('super/users/', SuperUserListAPIView.as_view()),
     path('super/users/<int:pk>', SuperUserDetailListAPIView.as_view()),
     path('categories/', CategoryListAPIView.as_view()),
     path('categories/<int:pk>', CategoryDetailAPIView.as_view()),
-    path('categories/<int:pk>/products', product_by_category),
-
     path('products/', ProductListAPIView.as_view()),
     path('products/<int:pk>', ProductDetailAPIView.as_view()),
     path('comments/', CommentListAPIView.as_view()),

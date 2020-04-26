@@ -32,7 +32,7 @@ class Comment(models.Model):
     created_date = models.DateTimeField(default=now)
     content = models.TextField(default='')
     product = models.ForeignKey(Product, on_delete=models.CASCADE,
-                                related_name='comments')
+                                related_name='comments', default=None, null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True,
                                    related_name='comments')
 
