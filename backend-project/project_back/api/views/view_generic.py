@@ -8,6 +8,7 @@ from api.models import Category, Product, Comment
 from api.serializers import CategorySerializer, CategoryModelSerializer, ProductModelSerializer, \
                             CategoryWithProductsSerializer, CommentSerializer, ProductSerializer
 
+
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategoryWithProductsSerializer
